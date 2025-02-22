@@ -1,0 +1,14 @@
+[ethereum]
+rpc_url = "https://mainnet.infura.io/v3/YOUR-PROJECT-ID"
+chain_id = 1
+contract_address = "0x..."
+
+[security]
+encryption_strength = "high"
+obfuscation_layers = 3
+
+[network]
+bootstrap_nodes = [
+    "bootstrap1.example.com",
+    "bootstrap2.example.com"
+] 

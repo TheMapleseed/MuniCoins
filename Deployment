@@ -1,0 +1,18 @@
+# Install dependencies
+npm install @openzeppelin/contracts
+
+# Deploy contract
+cargo run --bin deploy
+
+# Create .env file
+ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR-PROJECT-ID
+PRIVATE_KEY=your_private_key
+CONTRACT_ADDRESS=deployed_contract_address
+
+
+Cargo:
+cargo new secure_nft_system
+cd secure_nft_system
+
+Run with all features:
+cargo run --features full
