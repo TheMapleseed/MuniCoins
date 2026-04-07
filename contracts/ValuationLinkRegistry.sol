@@ -5,7 +5,7 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
  * @title ValuationLinkRegistry
- * @notice Binds an ERC-721 token (e.g. SecureNFT) to a TokenValuationLedger slot so
+ * @notice Binds an ERC-721 token from a registered collection to a TokenValuationLedger slot so
  *         off-chain / indexer logic can treat them as one intersected position. Auditors
  *         can verify the link on-chain; valuations are still computed from the ledger math.
  */
