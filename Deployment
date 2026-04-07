@@ -1,13 +1,32 @@
-# Install dependencies
-npm install @openzeppelin/contracts
+# Solidity (OpenZeppelin for forge): optional npm install, or: forge install OpenZeppelin/openzeppelin-contracts
+# Deno intersect / valuation tooling:
+#   deno task check && deno task intersect
+# SoftHSMv2 (PKCS#11 token for EIP-712 sidecar dev/staging): deploy/softhsm/README.md
+# Rust EIP-712 sidecar (local key reference signer): sidecar/README.md, `deno task sidecar:run`
+# Optional: scripts/verify-sidecar.sh (with sidecar already listening)
+# Whitepaper (Overleaf): municoins-whitepaper.tex (repo root) — see whitepaper/README.md
+# Threat model, ops, mTLS, env checklist: docs/security/*.md, docs/deployment/environment-checklist.md
+# CORS (Deno): CORS_ALLOW_ORIGINS or ALLOW_INSECURE_CORS_ALL (dev); see src/http/cors.ts
+# Errors: VERBOSE_ERRORS=true only when debugging; NODE_API_KEY for token node API
+# Solidity security pipeline:
+#   forge install foundry-rs/forge-std --no-commit
+#   forge build && forge test
+#   slither . --config-file slither.config.json
 
-# Deploy contract
-cargo run --bin deploy
+# Deploy contract: use Foundry scripts / your process — root Rust deploy binary removed from Cargo.toml
 
 # Create .env file
 ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR-PROJECT-ID
 PRIVATE_KEY=your_private_key
 CONTRACT_ADDRESS=deployed_contract_address
+
+# TokenValuationLedger constructor args now include:
+# (asset, totalTokenSlots, initialActiveSlots, pInitial, pSale, pCore, pPremium, admin, returnPoster, nftExpiryOracle, expirySigner)
+# After deploy, set policy:
+# - setPolicy(...)
+# - setSolvencyPolicy(...)
+# - setExpiryProofPolicy(...)
+# - optionally setComplianceMode(true) + allowlist
 
 
 Cargo:

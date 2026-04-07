@@ -1,0 +1,55 @@
+# Pingap gateway for token-node API.
+# Example: pingap -c /etc/pingap/pingap.toml
+
+[server]
+listen = "0.0.0.0:8080"
+
+[upstreams.token_node]
+strategy = "round_robin"
+nodes = [
+  "token-node.token-node.svc.cluster.local:80",
+]
+
+[route.node_health]
+path = "/health"
+methods = ["GET"]
+upstream = "token_node"
+
+[route.node_stats]
+path = "/stats"
+methods = ["GET"]
+upstream = "token_node"
+
+[route.node_snapshots]
+path = "/snapshots"
+methods = ["GET"]
+upstream = "token_node"
+
+[route.node_token]
+path = "/token/*"
+methods = ["GET"]
+upstream = "token_node"
+
+[route.node_link]
+path = "/link/*"
+methods = ["GET"]
+upstream = "token_node"
+
+[route.node_events]
+path = "/events"
+methods = ["GET"]
+upstream = "token_node"
+
+[plugins.cors]
+allow_origins = ["*"]
+allow_methods = ["GET", "OPTIONS"]
+
+[plugins.rate_limit]
+window = "1s"
+limit = 50
+
+[plugins.timeout]
+connect = "3s"
+read = "30s"
+write = "30s"
+

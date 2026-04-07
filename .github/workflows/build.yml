@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  rust-and-deno:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            ui -> target
+            viewer-egui -> target
+
+      - name: Install Trunk (WASM)
+        run: cargo install trunk --locked
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Check (sidecar + wasm lib + deno)
+        run: ./scripts/build.sh -t check
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+
+      - name: Install forge-std
+        run: forge install foundry-rs/forge-std --no-commit
+
+      - name: Release-style build (no docker)
+        run: ./scripts/build.sh -t build-release

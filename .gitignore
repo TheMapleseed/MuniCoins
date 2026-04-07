@@ -1,0 +1,35 @@
+# Rust
+/target/
+**/target/
+
+# Deno
+.deno/
+node_modules/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# SoftHSM generated tokens (see deploy/softhsm/.gitignore)
+deploy/softhsm/generated/
+
+# Cursor IDE (local; commit `.cursor/rules` manually if you want them shared)
+.cursor/
+
+# OS / editors
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Sphinx (optional local venv for docs/systems)
+.venv-docs/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.pdf
+*.toc
+*.synctex.gz

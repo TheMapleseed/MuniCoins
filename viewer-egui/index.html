@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuniCoins viewer (egui / WASM)</title>
+  <!-- Trunk: https://trunkrs.dev/ — run `trunk serve` from this directory -->
+  <link data-trunk rel="rust" href="src/lib.rs" data-wasm-opt="z" />
+</head>
+<body style="margin:0;background:#111;">
+  <canvas id="muni-canvas" width="1200" height="800"></canvas>
+  <!-- After `trunk build`, load generated `muni_viewer_egui.js` and:
+       import init, { WebHandle } from './muni_viewer_egui.js';
+       await init(); await new WebHandle().start(document.getElementById('muni-canvas'));
+       Or use the desktop binary: cargo run --features native -->
+</body>
+</html>

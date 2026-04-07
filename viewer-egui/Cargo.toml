@@ -1,0 +1,45 @@
+[package]
+name = "muni-viewer-egui"
+version = "0.1.0"
+edition = "2021"
+description = "egui + WASM viewer: live ledger metrics, Blake3-verified maturity schedule bytes"
+
+[lib]
+name = "muni_viewer_egui"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "muni-viewer-egui"
+path = "src/main.rs"
+required-features = ["native"]
+
+[features]
+default = ["native"]
+native = ["dep:env_logger"]
+
+[dependencies]
+eframe = "0.29"
+egui = "0.29"
+ehttp = "0.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+blake3 = "1.5"
+hex = "0.4"
+log = "0.4"
+env_logger = { version = "0.11", optional = true }
+
+# Own workspace root so `cargo` in this directory does not join the parent repo workspace.
+[workspace]
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+getrandom = { version = "0.2", features = ["js"] }
+console_error_panic_hook = "0.1"
+web-sys = { version = "0.3", features = [
+    "HtmlCanvasElement",
+    "Window",
+    "Document",
+    "Element",
+] }

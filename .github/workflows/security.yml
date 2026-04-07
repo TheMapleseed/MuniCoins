@@ -1,0 +1,46 @@
+name: Security Checks
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  solidity-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install OpenZeppelin deps
+        run: npm ci || npm install
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+
+      - name: Install forge-std
+        run: forge install foundry-rs/forge-std --no-commit
+
+      - name: Build contracts
+        run: forge build
+
+      - name: Run Foundry tests
+        run: forge test -vv
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Slither
+        run: pip install slither-analyzer
+
+      - name: Run Slither
+        run: slither . --config-file slither.config.json
+

@@ -1,0 +1,36 @@
+# Vector pipeline for token-node logs/events.
+# Run Vector as sidecar or daemonset and point source to node endpoint.
+
+[sources.node_logs]
+type = "file"
+include = ["/var/log/token-node/*.log"]
+read_from = "end"
+
+[sources.node_events]
+type = "http_client"
+endpoints = ["http://token-node.token-node.svc.cluster.local/events"]
+scrape_interval_secs = 5
+
+[transforms.parse_logs]
+type = "remap"
+inputs = ["node_logs"]
+source = '''
+.service = "token-node"
+.ts = now()
+'''
+
+[sinks.console]
+type = "console"
+inputs = ["parse_logs", "node_events"]
+encoding.codec = "json"
+
+# Optional: ship into InfluxDB line protocol via HTTP
+[sinks.influx]
+type = "http"
+inputs = ["node_events"]
+uri = "${INFLUX_URL}/api/v2/write?org=${INFLUX_ORG}&bucket=${INFLUX_BUCKET}&precision=ns"
+method = "post"
+auth.strategy = "bearer"
+auth.token = "${INFLUX_TOKEN}"
+encoding.codec = "text"
+

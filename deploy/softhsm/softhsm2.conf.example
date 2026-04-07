@@ -1,0 +1,11 @@
+# Copy or symlink to SOFTHSM2_CONF (e.g. deploy/softhsm/generated/softhsm2.conf).
+# Upstream reference: man softhsm2.conf, https://github.com/softhsm/SoftHSMv2
+
+# Where token databases are stored (must exist and be restricted on the host).
+directories.tokendir = TOKENDIR_PLACEHOLDER
+
+# Optional: object store backend (file is typical).
+objectstore.backend = file
+
+# Logging (adjust per environment).
+log.level = INFO

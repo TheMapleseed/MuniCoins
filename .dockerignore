@@ -1,0 +1,11 @@
+target
+**/target
+node_modules
+.git
+.github
+viewer-egui/dist
+**/*.md
+!README.md
+deno.lock
+.env
+.env.*

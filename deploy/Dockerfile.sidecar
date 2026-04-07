@@ -1,0 +1,18 @@
+# Multi-stage: Rust EIP-712 sidecar.
+# Build from repo root:
+#   docker build -f deploy/Dockerfile.sidecar -t muni-issuance-sidecar .
+# Run (dev keys — use secrets in production):
+#   docker run --rm -e ISSUANCE_SIGNER_PRIVATE_KEY=... \
+#     -e ALLOW_INSECURE_LOCAL_DEV=true -p 8788:8788 muni-issuance-sidecar
+
+FROM rust:1-bookworm AS builder
+WORKDIR /app
+COPY . .
+RUN cargo build -p issuance-eip712-sidecar --release
+
+FROM debian:bookworm-slim AS runtime
+RUN useradd -r -s /usr/sbin/nologin muni
+COPY --from=builder /app/target/release/issuance-eip712-sidecar /usr/local/bin/
+USER muni
+EXPOSE 8788
+ENTRYPOINT ["/usr/local/bin/issuance-eip712-sidecar"]

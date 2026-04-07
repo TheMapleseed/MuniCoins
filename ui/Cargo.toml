@@ -1,0 +1,16 @@
+[package]
+name = "muni-ui-leptos"
+version = "0.1.0"
+edition = "2021"
+description = "Leptos CSR UI — Rust to WASM; Deno serves static dist with minimal scaffolding"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+leptos = { version = "0.7", features = ["csr"] }
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
+
+# Standalone workspace (matches viewer-egui pattern).
+[workspace]
