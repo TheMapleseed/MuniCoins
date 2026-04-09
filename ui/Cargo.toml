@@ -2,7 +2,7 @@
 name = "muni-ui-leptos"
 version = "0.1.0"
 edition = "2021"
-license = "UNLICENSED"
+license = "LicenseRef-Commercial"
 description = "Leptos CSR UI — Rust to WASM; Deno serves static dist with minimal scaffolding"
 
 [lib]

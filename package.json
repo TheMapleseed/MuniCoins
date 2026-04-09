@@ -1,7 +1,7 @@
 {
   "name": "municoins-contracts",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "LicenseRef-Commercial",
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.0"
   }

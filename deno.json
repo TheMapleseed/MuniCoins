@@ -1,7 +1,7 @@
 {
   "name": "municoins",
   "version": "0.1.0",
-  "license": "UNLICENSED",
+  "license": "LicenseRef-Commercial",
   "exports": {
     ".": "./src/intersect/mod.ts"
   },

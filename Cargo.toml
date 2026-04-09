@@ -3,7 +3,7 @@ name = "municoin-root"
 version = "0.0.1"
 edition = "2021"
 authors = ["The Mapleseed Incorporated"]
-license = "UNLICENSED"
+license = "LicenseRef-Commercial"
 description = "Workspace root — active components: contracts (Foundry), Deno services, issuance-eip712-sidecar, viewer-egui, ui (Leptos)"
 
 # Intentionally minimal.

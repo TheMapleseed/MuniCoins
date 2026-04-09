@@ -1,4 +1,5 @@
-PROPRIETARY — ALL RIGHTS RESERVED
+COMMERCIAL SOFTWARE LICENSE
+(Proprietary — all rights reserved)
 
 Copyright (c) The Mapleseed Incorporated. All rights reserved.
 
@@ -26,3 +27,6 @@ Incorporated.
 
 For licensing inquiries: contact The Mapleseed Incorporated through your
 authorized business channel.
+
+SPDX: This repository uses the identifier LicenseRef-Commercial; the binding terms
+are the text above (not an SPDX-listed open-source license).
