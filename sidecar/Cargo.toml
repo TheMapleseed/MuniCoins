@@ -3,6 +3,7 @@ name = "issuance-eip712-sidecar"
 version = "0.1.0"
 edition = "2021"
 authors = ["The Mapleseed Incorporated"]
+license = "UNLICENSED"
 description = "HTTP EIP-712 signing service for TokenValuationLedger issuance certificates"
 
 [[bin]]

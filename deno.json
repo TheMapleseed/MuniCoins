@@ -1,7 +1,7 @@
 {
   "name": "municoins",
   "version": "0.1.0",
-  "license": "GPL-3.0",
+  "license": "UNLICENSED",
   "exports": {
     ".": "./src/intersect/mod.ts"
   },

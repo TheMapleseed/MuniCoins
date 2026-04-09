@@ -2,6 +2,7 @@
 name = "muni-viewer-egui"
 version = "0.1.0"
 edition = "2021"
+license = "UNLICENSED"
 description = "egui + WASM viewer: live ledger metrics, Blake3-verified maturity schedule bytes"
 
 [lib]

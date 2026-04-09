@@ -52,4 +52,4 @@ docs/systems/    Sphinx RST map of subsystems → repo paths (see BUILD.md)
 
 ## License
 
-GPL-3.0 — see `LICENSE`.
+**Proprietary** — all rights reserved. See `LICENSE`. No public use or redistribution is granted except under a separate written agreement with The Mapleseed Incorporated.
